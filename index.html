@@ -3,94 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarhus Politi - Tjenestesystem</title>
+    <title>Politi MDT System</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- LOGIN SKÆRM -->
-    <div id="login-screen" class="screen full-screen center-flex fade-in">
-        
-        <div class="login-container glass-panel">
-            <div class="logo-area">
-                <div class="shield-logo">🚔</div>
-                <h2>AARHUS POLITI</h2>
-                <p>Begrænset Adgang - Kun For Ansatte</p>
-            </div>
-
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="email">Tjeneste Email</label>
-                    <input type="email" id="email" placeholder="navn@politi.dk" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Adgangskode</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
-                </div>
-                <div id="login-error" class="error-text hidden">Forkert email eller adgangskode.</div>
-                <button type="submit" class="btn primary-btn">LOG IND</button>
-            </form>
-
-            <div class="admin-hint">
-                <strong>STANDARD ADMIN LOGIN:</strong><br>
-                Email: politi_admin@politi.dk<br>
-                Kode: Frederik240909
-            </div>
-        </div>
-        
-    </div>
-
-    <!-- DASHBOARD SKÆRM -->
-    <div id="dashboard-screen" class="screen hidden fade-in">
-        
-        <nav class="top-nav glass-panel">
-            <div class="nav-brand">
-                <span class="shield-logo-small">🚔</span>
-                <span>AARHUS POLITI - SYSTEM</span>
-            </div>
-            <div class="nav-profile">
-                <div class="profile-info">
-                    <span id="user-display">bruger@politi.dk</span>
-                    <span id="role-badge" class="badge">Betjent</span>
-                </div>
-                <button id="logout-btn" class="btn secondary-btn">Log ud</button>
-            </div>
+    <header>
+        <h1>Politi MDT System</h1>
+        <nav>
+            <button id="loginBtn">Login</button>
+            <button id="logoutBtn" style="display:none;">Log ud</button>
         </nav>
+    </header>
 
-        <main class="dashboard-content">
-            <header class="page-header">
-                <h1>Tjeneste Dashboard</h1>
-                <p>Velkommen tilbage. Her har du overblik over byens sager og patruljer.</p>
-            </header>
+    <main>
+        <!-- Login -->
+        <div id="loginDiv">
+            <h2>Login</h2>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button id="loginSubmit">Log ind</button>
+            <p id="loginMessage"></p>
+        </div>
 
-            <div class="grid-container">
-                <!-- Standard Politi Widgets -->
-                <div class="widget glass-panel">
-                    <h3>Aktivitetslog</h3>
-                    <p>Ingen nye kritiske hændelser i Aarhus C den seneste time.</p>
-                    <button class="btn outline-btn" style="margin-top: 15px;">Opret ny sag</button>
-                </div>
+        <!-- Admin Panel -->
+        <div id="adminDiv" style="display:none;">
+            <h2>Admin Panel</h2>
+            <input type="email" id="newOfficerEmail" placeholder="Betjente Email">
+            <input type="password" id="newOfficerPassword" placeholder="Password">
+            <button id="createOfficer">Opret Betjent</button>
+            <p id="adminMessage"></p>
+        </div>
 
-                <div class="widget glass-panel">
-                    <h3>Efterlyste Borgere</h3>
-                    <div class="empty-state">Ingen aktive efterlysninger i databasen lige nu.</div>
-                </div>
+        <!-- MDT Dashboard -->
+        <div id="mdtDiv" style="display:none;">
+            <h2>MDT Dashboard</h2>
+            <button id="newCaseBtn">Opret Sag</button>
+            <div id="casesList"></div>
+        </div>
 
-                <!-- Admin Controls Panel (Kun synlig for Admin) -->
-                <div id="admin-panel" class="widget highlight-widget glass-panel hidden">
-                    <h3>🛡️ Admin Controls</h3>
-                    <p>Som administrator har du adgang til systemændringer og brugerstyring.</p>
-                    <div class="admin-actions">
-                        <button class="btn admin-btn">Håndter Brugere</button>
-                        <button class="btn admin-btn">System Indstillinger</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
+        <!-- Create Case Modal -->
+        <div id="caseModal" style="display:none;">
+            <h3>Opret Sag</h3>
+            <input type="text" id="caseName" placeholder="Sag Navn">
+            <select id="crimeSelect"></select>
+            <button id="createCase">Gem Sag</button>
+            <button id="cancelCase">Annuller</button>
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
