@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarhus Politi - Tjenestesystem</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- LOGIN SKÆRM -->
+    <div id="login-screen" class="screen full-screen center-flex fade-in">
+        
+        <div class="login-container glass-panel">
+            <div class="logo-area">
+                <div class="shield-logo">🚔</div>
+                <h2>AARHUS POLITI</h2>
+                <p>Begrænset Adgang - Kun For Ansatte</p>
+            </div>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">Tjeneste Email</label>
+                    <input type="email" id="email" placeholder="navn@politi.dk" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Adgangskode</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <div id="login-error" class="error-text hidden">Forkert email eller adgangskode.</div>
+                <button type="submit" class="btn primary-btn">LOG IND</button>
+            </form>
+
+            <div class="admin-hint">
+                <strong>STANDARD ADMIN LOGIN:</strong><br>
+                Email: politi_admin@politi.dk<br>
+                Kode: Frederik240909
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- DASHBOARD SKÆRM -->
+    <div id="dashboard-screen" class="screen hidden fade-in">
+        
+        <nav class="top-nav glass-panel">
+            <div class="nav-brand">
+                <span class="shield-logo-small">🚔</span>
+                <span>AARHUS POLITI - SYSTEM</span>
+            </div>
+            <div class="nav-profile">
+                <div class="profile-info">
+                    <span id="user-display">bruger@politi.dk</span>
+                    <span id="role-badge" class="badge">Betjent</span>
+                </div>
+                <button id="logout-btn" class="btn secondary-btn">Log ud</button>
+            </div>
+        </nav>
+
+        <main class="dashboard-content">
+            <header class="page-header">
+                <h1>Tjeneste Dashboard</h1>
+                <p>Velkommen tilbage. Her har du overblik over byens sager og patruljer.</p>
+            </header>
+
+            <div class="grid-container">
+                <!-- Standard Politi Widgets -->
+                <div class="widget glass-panel">
+                    <h3>Aktivitetslog</h3>
+                    <p>Ingen nye kritiske hændelser i Aarhus C den seneste time.</p>
+                    <button class="btn outline-btn" style="margin-top: 15px;">Opret ny sag</button>
+                </div>
+
+                <div class="widget glass-panel">
+                    <h3>Efterlyste Borgere</h3>
+                    <div class="empty-state">Ingen aktive efterlysninger i databasen lige nu.</div>
+                </div>
+
+                <!-- Admin Controls Panel (Kun synlig for Admin) -->
+                <div id="admin-panel" class="widget highlight-widget glass-panel hidden">
+                    <h3>🛡️ Admin Controls</h3>
+                    <p>Som administrator har du adgang til systemændringer og brugerstyring.</p>
+                    <div class="admin-actions">
+                        <button class="btn admin-btn">Håndter Brugere</button>
+                        <button class="btn admin-btn">System Indstillinger</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
